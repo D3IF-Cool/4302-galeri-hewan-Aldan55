@@ -3,6 +3,7 @@ package org.d3if0042.galerihewan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+
 import org.d3if0042.galerihewan.databinding.ListItemBinding
 
 class MainAdapter(private val data: List<Hewan>) :
@@ -12,6 +13,7 @@ class MainAdapter(private val data: List<Hewan>) :
             fun bind(hewan: Hewan) = with(binding) {
                 namaTextView.text = hewan.nama
                 latinTextView.text = hewan.namaLatin
+                kelasTextView.text = hewan.kelas
                 imageView.setImageResource(hewan.imageResId)
 
             }
