@@ -28,8 +28,6 @@ class MainAdapter(private val data: List<Hewan>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(data[position])
     }
-
-
     override fun getItemCount(): Int {
         return data.size
     }
