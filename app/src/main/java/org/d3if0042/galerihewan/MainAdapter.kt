@@ -3,8 +3,10 @@ package org.d3if0042.galerihewan
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 
 import org.d3if0042.galerihewan.databinding.ListItemBinding
+import org.d3if0042.galerihewan.network.HewanApi
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     private val data = mutableListOf<Hewan>()
@@ -14,11 +16,15 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
     class ViewHolder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(hewan: Hewan) = with(binding) {
-            namaTextView.text = hewan.nama
-            latinTextView.text = hewan.namaLatin
-            imageView.setImageResource(hewan.imageResId)
-
+        fun bind(hewan: Hewan) {
+            with(binding) {
+                namaTextView.text = hewan.nama
+                latinTextView.text = hewan.namaLatin
+                Glide.with(imageView.context)
+                    .load(HewanApi.getHewanUrl(hewan.imageId))
+                    .error(R.drawable.ic_baseline_broken_image_24)
+                    .into(imageView)
+            }
         }
     }
 
